@@ -36,5 +36,5 @@ php bin/console server:run
 
 Login credentials.
 
-Username: admin
-Password: admin
+- Username: admin
+- Password: admin
