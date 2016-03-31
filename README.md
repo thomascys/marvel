@@ -1,7 +1,11 @@
 # Symfony 3 demo application
 
-A Symfony 3 demo application created to get familiar with the Symfony framework.
-It uses Doctrine ORM, entities, data fixtures and authentication.
+A Symfony 3 demo application created to get familiar with the Symfony framework. It uses:
+
+- Doctrine ORM Mapping
+- Entities
+- Data fixtures
+- Authentication
 
 ## Requirements
 
@@ -14,15 +18,16 @@ Clone this project.
 
 ```bash
 git clone https://github.com/thomascys/marvel.git
+cd marvel
 ```
 
-Run composer.
+Run composer. When the installer asks you to choose a database name please type **marvel**
 
 ```bash
 composer install
 ```
 
-To get this project fully up and running just run the following commands to create the database, tables and populate them with data fixtures.
+Run the following commands to create the database, tables and populate them with data fixtures.
 
 ```bash
 php bin/console doctrine:database:create
