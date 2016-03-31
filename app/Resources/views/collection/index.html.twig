@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Collection</h1>
+    <ul class="list-inline">
+        {% for comic in comics %}
+            <li>
+                <div class="text-center">
+                    <img class="img-responsive img-thumbnail" style="height: 250px;" src="{{ comic.cover }}" />
+                    <p>Issue #{{ comic.issueNumber }}
+                        <br />
+                        <span class="text-muted">volume {{ comic.volume }}</span>
+                    </p>
+                    <!-- <a class="btn btn-danger btn-xs js-remove-from-collection" href="#" data-comic_id="{{ comic.id }}">Remove from collection</a> -->
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- TODO make this work -->
+    <script type="text/javascript">
+        $('.js-remove-from-collection').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: "/collection/remove",
+                dataType: "json",
+                data: {comic_id: $(this).data('comic_id')},
+            });
+        })
+    </script>
+{% endblock %}

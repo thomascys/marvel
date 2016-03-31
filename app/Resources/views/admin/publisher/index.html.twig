@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Publisher list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Logo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for publisher in publishers %}
+            <tr>
+                <td><a href="{{ path('admin_publisher_show', { 'id': publisher.id }) }}">{{ publisher.id }}</a></td>
+                <td>{{ publisher.name }}</td>
+                <td>{{ publisher.logo }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{{ path('admin_publisher_show', { 'id': publisher.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_publisher_edit', { 'id': publisher.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('admin_publisher_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

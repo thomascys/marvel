@@ -1,0 +1,36 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Series
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="series")
+ */
+class Series
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $title;
+    /**
+     * @ORM\ManyToOne(targetEntity="Publisher", inversedBy="series")
+     */
+    protected $publisher;
+    /**
+     * @ORM\OneToMany(targetEntity="Comic", mappedBy="series")
+     */
+    protected $comics;
+}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Series list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for series in series %}
+            <tr>
+                <td><a href="{{ path('admin_series_show', { 'id': series.id }) }}">{{ series.id }}</a></td>
+                <td>{{ series.title }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{{ path('admin_series_show', { 'id': series.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_series_edit', { 'id': series.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('admin_series_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

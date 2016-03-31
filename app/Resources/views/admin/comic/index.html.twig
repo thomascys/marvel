@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comic list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Issue</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Volume</th>
+                <th>Cover</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comic in comics %}
+            <tr>
+                <td><a href="{{ path('admin_comic_show', { 'id': comic.id }) }}">{{ comic.id }}</a></td>
+                <td>{{ comic.issueNumber }}</td>
+                <td>{{ comic.title }}</td>
+                <td>{{ comic.description }}</td>
+                <td>{{ comic.volume }}</td>
+                <td>{{ comic.cover }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{{ path('admin_comic_show', { 'id': comic.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_comic_edit', { 'id': comic.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('admin_comic_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

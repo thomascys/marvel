@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Comics</h1>
+        <ul class="list-inline">
+        {% for comic in comics %}
+            <li>
+                <div class="text-center">
+                    <img class="img-responsive img-thumbnail" style="height: 250px;" src="{{ comic.cover }}" />
+                    <p>Issue #{{ comic.issueNumber }}
+                        <br />
+                        <span class="text-muted">volume {{ comic.volume }}</span>
+                    </p>
+                    {% if app.user %}
+                    <a class="btn btn-success btn-xs js-add-to-collection" href="#" data-comic_id="{{ comic.id }}">Add to collection</a>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $('.js-add-to-collection').click(function (e) {
+        var add = $(this);
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: "/collection/add",
+            dataType: "json",
+            data: {comic_id: add.data('comic_id')},
+            success: function(){
+                add.after(' <i class=\"glyphicon glyphicon-ok\"></i>');
+            }
+        });
+    })
+</script>
+{% endblock %}
