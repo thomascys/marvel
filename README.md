@@ -2,6 +2,8 @@
 
 A Symfony 3 demo application created to get familiar with the Symfony framework. It uses:
 
+[![Build Status](https://travis-ci.org/thomascys/marvel.svg?branch=master)](https://travis-ci.org/thomascys/marvel)
+
 - Doctrine ORM Mapping
 - Entities
 - Data fixtures
