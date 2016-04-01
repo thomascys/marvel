@@ -1,13 +1,13 @@
 # Symfony 3 demo application
 
-A Symfony 3 demo application created to get familiar with the Symfony framework. It uses:
-
-[![Build Status](https://travis-ci.org/thomascys/marvel.svg?branch=master)](https://travis-ci.org/thomascys/marvel)
+A Symfony 3 demo application created to get familiar with the Symfony framework.
 
 - Doctrine ORM Mapping
 - Entities
 - Data fixtures
 - Authentication
+
+[![Build Status](https://travis-ci.org/thomascys/marvel.svg?branch=master)](https://travis-ci.org/thomascys/marvel)
 
 ## Requirements
 
@@ -23,7 +23,7 @@ git clone https://github.com/thomascys/marvel.git
 cd marvel
 ```
 
-Run composer. When the installer asks you to choose a database name please type **marvel**
+Run composer. When the installer asks you to choose a database name please type **marvel**.
 
 ```bash
 composer install
