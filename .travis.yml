@@ -14,6 +14,3 @@ before_install:
 
 install:
   - composer install
-
-script:
-  - phpunit -c app
