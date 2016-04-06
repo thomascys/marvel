@@ -67,4 +67,30 @@ class CollectionController extends Controller
 
     return new JsonResponse(array('message' => 'added'));
   }
+
+  /**
+   * @Route("/collection/remove", name="remove_to_collection")
+   * @Method("GET")
+   */
+  public function removeFromCollectionAction(Request $request)
+  {
+    if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+      throw $this->createAccessDeniedException();
+    }
+
+    if(!$request->isXmlHttpRequest()) {
+      return new Response();
+    }
+
+    $userId = $this->getUser()->getId();
+    $comicId = $request->get('comic_id');
+
+    $em = $this->getDoctrine()->getManager();
+    $comic = $em->getRepository('AppBundle:Collection')->findOneBy(['comic' => $comicId, 'user' => $userId]);
+
+    $em->remove($comic);
+    $em->flush();
+
+    return new JsonResponse(array('message' => 'removed'));
+  }
 }

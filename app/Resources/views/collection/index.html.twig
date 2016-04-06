@@ -11,7 +11,7 @@
                         <br />
                         <span class="text-muted">volume {{ comic.volume }}</span>
                     </p>
-                    <!-- <a class="btn btn-danger btn-xs js-remove-from-collection" href="#" data-comic_id="{{ comic.id }}">Remove from collection</a> -->
+                    <a class="btn btn-danger btn-xs js-remove-from-collection" href="#" data-comic_id="{{ comic.id }}">Remove from collection</a>
                 </div>
             </li>
         {% endfor %}
@@ -22,12 +22,16 @@
     <!-- TODO make this work -->
     <script type="text/javascript">
         $('.js-remove-from-collection').click(function (e) {
+            var removed = $(this);
             e.preventDefault();
             $.ajax({
                 type: "GET",
                 url: "/collection/remove",
                 dataType: "json",
-                data: {comic_id: $(this).data('comic_id')},
+                data: {comic_id: removed.data('comic_id')},
+                success: function(){
+                    removed.parent().parent().remove()
+                }
             });
         })
     </script>
